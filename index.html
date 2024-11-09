@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: lightsalmon;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: 70px;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    color: black;
+    text-decoration: none;
+  }
+
+  nav ul li a:hover{
+    background-color: gray;
+    padding:10px;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .para{
+    color: gray;
+    margin-bottom:20px ;
+    text-align: justify;
+    line-height: 40px;
+  }
+
+  .sub_title{
+    color:darkblue;
+    margin-bottom: 50px;
+  }
+
+  .content-section {
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.5s ease;
+    background-color: lightgray;
+    margin-bottom:50px;
+  }
+  
+  .btn{
+    background-color: darkslateblue;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 10px;
+    
+
+  }
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+    }
+  }
+
+footer {
+  background-color: #333; 
+  color: #fff; 
+  text-align: center; 
+  padding: 20px 0; 
+  font-size: 14px; 
+}
+
+.footer-content {
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+.footer-content p {
+  margin: 5px 0; 
+}
+
+.footer-content a {
+  color: orangered; 
+  text-decoration: none; 
+}
+
+.footer-content a:hover {
+  text-decoration: underline; 
+}
+
+.social-media {
+  margin: 10px 0; 
+}
+
+.social-media a {
+  margin: 0 10px; 
+  color: orangered; 
+  font-weight: bold; 
+}
+
+.social-media a:hover {
+  color: orangered; 
+}
+
+  
+  </style>
+  <!-- style Sheet -->
+  <!-- <link rel="stylesheet" href="./assets/CSS/style.css"> -->
+  <title>Real Estate Project</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#calculator">Mortgage Calculator</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="content-section">
+    <h1 class="sub_title"> Welcome to Our Real Estate Agency Project </h1>
+    <p class="para"> Our mission is to help our clients to find the most suitable property for them without much hassle. We focus on residential and commercial real estate and offer a range of services that includes but is not limited to buying and selling, rentals, and property management. A committed team of related professionals harnesses local market know-how and the latest technology in order to help and advice clients at every stage of the process. Easy communication, ethical practice, and unparalleled customer satisfaction are some of the ideals that we abide by making it a perfect experience whether it is your first time buying a home, you are looking to invest, or you want to sell your house. </p>
+  </section>
+
+  <section id="calculator" class="content-section">
+    <h2 class="sub_title">Mortgage Calculator</h2>
+    <form id="mortgageForm">
+      <label for="principal">Loan income:</label>
+      <input type="number" id="principal" required><br><br>
+      <label for="interest">Interest Rate:</label>
+      <input type="number" id="interest" required><br><br>
+      <label for="years">Year:</label>
+      <input type="number" id="years" required><br><br>
+      <button type="button" class="btn" onclick="calculateMortgage()">Calculate</button>
+      <p id="result"></p>
+    </form>
+  </section>
+
+  <section id="properties" class="content-section">
+    <h2 class="sub_title">Request a Property Viewing</h2>
+    <form id="viewingRequestForm">
+      <label for="property">Property ID:</label>
+      <input type="text" id="property" required><br><br>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required><br><br>
+      <button type="submit" class="btn" >Submit Request</button>
+    </form>
+  </section>
+
+  <section id="contact" class="content-section">
+    <h2 class="sub_title">Contact Us</h2>
+    <form id="contactForm">
+      <label for="contactName">Your Name:</label>
+      <input type="text" id="contactName" required><br><br>
+      <label for="contactEmail">Your Email:</label>
+      <input type="email" id="contactEmail" required><br><br>
+      <label for="message">Message:</label>
+      <textarea id="message" required></textarea><br><br>
+      <button type="button" class="btn" onclick="sendEmail()">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Real Estate Agency. All Rights Reserved.</p>
+      <div class="social-media">
+        <a href="#" target="_blank">Facebook</a> |
+        <a href="#" target="_blank">Twitter</a> |
+        <a href="#" target="_blank">LinkedIn</a>
+      </div>
+      <p>Contact us at <a href="mailto:info@realestateagency.com">kartikmoradiya@gmail.com</a> or call +123-456-7890</p>
+    </div>
+  </footer>
+
+  <!------------------------- javascript Link -------------------------------->
+  <!-- <script src="./assets/javascript/script.js"></script> -->
+   <script>
+    /**---------------- Scroll animations ------------------*/
+const sections = document.querySelectorAll('.content-section');
+window.addEventListener('scroll', () => {
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop < window.innerHeight - 100) {
+      section.classList.add('visible');
+      section.classList.remove('hidden');
+    } else {
+      section.classList.add('hidden');
+      section.classList.remove('visible');
+    }
+  });
+});
+
+/**---------------- Mortgage Calculator ------------------*/
+
+function calculateMortgage() {
+  const principal = document.getElementById('principal').value;
+  const interest = document.getElementById('interest').value;
+  const years = document.getElementById('years').value;
+  const monthlyInterest = interest / 100 / 12;
+  const numberOfPayments = years * 12;
+  const monthlyPayment = (principal * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -numberOfPayments));
+  document.getElementById('result').textContent = `Monthly Payment: $${monthlyPayment.toFixed(2)}`;
+}
+
+function sendEmail() {
+  alert("Email sent! This requires backend integration to function.");
+}
+
+   </script>
+</body>
+</html>
